@@ -18,7 +18,7 @@ def start_bot(update: Updater, context:CallbackContext):
 def chat(update: Updater, context: CallbackContext):
 	text = """
 	
-	Привет, {} , как же ты меня бесишь, где 100к в месяц??? =)""".format(update.message.chat.first_name)
+	Привет, {} , как же ты меня бесишь, тварь??? =)""".format(update.message.chat.first_name)
 	logging.info(text)
 
 	update.message.reply_text(text)
