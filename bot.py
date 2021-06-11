@@ -9,15 +9,17 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
 					)
 
 def start_bot(update: Updater, context:CallbackContext):
-	mytext = """
+	mytext = """Привет,
 	
-	Привет, {} , как же ты меня бесишь, где 100к в месяц??? =)""".format(update.message.chat.first_name)
+	 {} , как твои дела??? =)""".format(update.message.chat.first_name)
+	logging.info('User {} press /start'.format(update.message.chat.username))
 	update.message.reply_text(mytext)
 	
 def chat(update: Updater, context: CallbackContext):
 	text = """
 	
 	Привет, {} , как же ты меня бесишь, где 100к в месяц??? =)""".format(update.message.chat.first_name)
+	logging.info(text)
 
 	update.message.reply_text(text)
 
@@ -25,7 +27,7 @@ def main():
 	updtr = Updater(settings.TOKEN_TELEGRAM)
 
 	updtr.dispatcher.add_handler(CommandHandler("start", start_bot))
-	updtr.dispatcher.add_handler(MessageHandler(Filters.text,chat))
+	updtr.dispatcher.add_handler(MessageHandler(Filters.text, chat))
 
 	updtr.start_polling()
 	updtr.idle()
